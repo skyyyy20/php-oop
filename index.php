@@ -1,7 +1,7 @@
 <?php
 require_once('classes/database.php');
 $con = new database();
-
+// das
 if(isset($_POST['Delete'])){
   $id = $_POST['id'];
   if($con->Delete($id)) {
