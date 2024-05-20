@@ -84,4 +84,46 @@ class database{
             return false;
         }
     }
+    function viewdata($id){
+    try{
+        $con = $this->opencon();
+        $query = $con->prepare("SELECT users.UserID, users.Firstname, users.Lastname, users.Birthday, users.Sex, users.UserName, users.UserPass, user_address.user_add_street, user_address.user_add_barangay, user_address.user_add_city, user_address.user_add_province FROM users JOIN user_address ON users.UserID = user_address.UserID WHERE users.UserID = ?");
+        $query->execute([$id]);
+        return $query->fetch();
+ 
+    } catch (PDOException $e){
+    return [] ;
+    }  
+}
+    function updateUser($user_id, $firstname, $lastname, $birthday,$sex, $username, $password) {
+    try {
+        $con = $this->opencon();
+        $con->beginTransaction();
+        $query = $con->prepare("UPDATE users SET Firstname=?, Lastname=?, Birthday=?, Sex=?, UserName=?, UserPass=? WHERE UserID=?");
+        $query->execute([$firstname, $lastname,$birthday,$sex,$username, $password, $user_id]);
+        // Update successful
+        $con->commit();
+        return true;
+    } catch (PDOException $e) {
+        // Handle the exception (e.g., log error, return false, etc.)
+         $con->rollBack();
+        return false; // Update failed
+    }
+}
+ 
+    function updateUserAddress($user_id, $street, $barangay, $city, $province) {
+    try {
+        $con = $this->opencon();
+        $con->beginTransaction();
+        $query = $con->prepare("UPDATE user_address SET user_add_street=?, user_add_barangay=?, user_add_city=?, user_add_province=? WHERE UserID=?");
+        $query->execute([$street, $barangay, $city, $province, $user_id]);
+        $con->commit();
+        return true; // Update successful
+    } catch (PDOException $e) {
+        // Handle the exception (e.g., log error, return false, etc.)
+        $con->rollBack();
+        return false; // Update failed
+    }
+     
+}
 }

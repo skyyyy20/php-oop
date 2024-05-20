@@ -1,7 +1,12 @@
 <?php
 require_once('classes/database.php');
 $con = new database();
-// das
+session_start();
+
+if(empty($_SESSION ['username'])){
+  header('location:login.php');
+}
+
 if(isset($_POST['Delete'])){
   $id = $_POST['id'];
   if($con->Delete($id)) {
@@ -26,6 +31,8 @@ if(isset($_POST['Delete'])){
 <link rel="stylesheet" href="./includes/style.css">
 </head>
 <body>
+
+<?php include('includes/navbar.php');?>
 
 <div class="container user-info rounded shadow p-3 my-2">
 <h2 class="text-center mb-2">User Table</h2>
@@ -59,8 +66,12 @@ if(isset($_POST['Delete'])){
           <td><?php echo $rows['UserName'];?></td>
           <td><?php echo $rows['address'];?></td>
           <td>
-          <a href="#" class="btn btn-primary btn-sm">Edit</a>
+          
         <!-- Delete button -->
+        <form action="update.php" method="post" style="display: inline;">
+          <input type="hidden" name="id" value="<?php echo $rows['UserID'];?>">
+          <input type="submit" class="btn btn-primary btn-sm"  name="Update" value="Update">
+        </form>
         <form method="POST" style="display: inline;">
             <input type="hidden" name="id" value=" <?php echo $rows['UserID']; ?>">
             <input type="submit" name="Delete" class="btn btn-danger btn-sm" value="Delete" onclick="return confirm('Are you sure you want to delete this user?')">
