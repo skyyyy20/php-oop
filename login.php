@@ -7,18 +7,18 @@ if(isset($_SESSION ['username'])){
 }
 ?>
 <?php 
-if(isset($_POST['Login'])){
-$username = $_POST['UserName'];
-$password = $_POST['UserPass'];
-$result = $con->check($username, $password);
-if ($result) {
-if($result['UserName'] == $_POST['UserName'] && $result['UserPass'] == $_POST['UserPass']){
-$_SESSION['username']=$result['UserName'];
-header('location:index.php');
-}
-else{echo "error";}
-}
-else{echo "error";}
+
+if (isset($_POST['Login'])) {
+  $username = $_POST['UserName'];
+  $password = $_POST['UserPass'];
+  $result = $con->check($username, $password);
+
+  if ($result) {
+      $_SESSION['username'] = $result['UserName'];
+      header('location:index.php');
+  } else {
+      $error = "Incorrect username or password. Please try again.";
+  }
 }
 ?>
 
