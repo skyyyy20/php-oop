@@ -15,11 +15,14 @@ if (isset($_POST['Login'])) {
 
   if ($result) {
       $_SESSION['username'] = $result['UserName'];
-      header('location:index.php');
-  } else {
-      $error = "Incorrect username or password. Please try again.";
-  }
-}
+      if($result['account_type']==0){
+        header('location:index.php');}
+        else if ($result['account_type']==1){
+          header('location:user_account.php');}
+        }else{
+            $error = " ";
+          }
+        }
 ?>
 
 <!DOCTYPE html>
