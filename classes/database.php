@@ -116,7 +116,7 @@ class database{
     function viewdata($id){
     try{
         $con = $this->opencon();
-        $query = $con->prepare("SELECT users.UserID, users.Firstname, users.Lastname, users.Birthday, users.Sex, users.UserName, users.UserPass, user_address.user_add_street, user_address.user_add_barangay, user_address.user_add_city, user_address.user_add_province FROM users JOIN user_address ON users.UserID = user_address.UserID WHERE users.UserID = ?");
+        $query = $con->prepare("SELECT users.UserID, users.Firstname, users.Lastname, users.Birthday, users.Sex, users.UserName, users.UserPass, users.user_profile_picture, user_address.user_add_street, user_address.user_add_barangay, user_address.user_add_city, user_address.user_add_province FROM users JOIN user_address ON users.UserID = user_address.UserID WHERE users.UserID = ?");
         $query->execute([$id]);
         return $query->fetch();
  
@@ -154,5 +154,22 @@ class database{
         return false; // Update failed
     }
      
+}
+    function validateCurrentPassword($userId, $currentPassword) {
+    // Open database connection
+    $con = $this->opencon();
+
+    // Prepare the SQL query
+    $query = $con->prepare("SELECT UserPass FROM users WHERE UserID = ?");
+    $query->execute([$userId]);
+
+    // Fetch the user data as an associative array
+    $user = $query->fetch(PDO::FETCH_ASSOC);
+
+    // If a user is found, verify the password
+    if ($user && password_verify($currentPassword, $user['UserPass'])) {
+        return true;
+    }
+
 }
 }
