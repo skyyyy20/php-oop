@@ -172,4 +172,35 @@ class database{
     }
 
 }
+    function updatePassword($userId, $hashedPassword){
+    try {
+        $con = $this->opencon();
+        $con->beginTransaction();
+        $query = $con->prepare("UPDATE users SET UserPass = ? WHERE UserID = ?");
+        $query->execute([$hashedPassword, $userId]);
+        // Update successful
+        $con->commit();
+        return true;
+    } catch (PDOException $e) {
+        // Handle the exception (e.g., log error, return false, etc.)
+         $con->rollBack();
+        return false; // Update failed
+    }
+
+}
+    function updateUserProfilePicture($userID, $profilePicturePath) {
+    try {
+        $con = $this->opencon();
+        $con->beginTransaction();
+        $query = $con->prepare("UPDATE users SET user_profile_picture = ? WHERE UserID = ?");
+        $query->execute([$profilePicturePath, $userID]);
+        // Update successful
+        $con->commit();
+        return true;
+    } catch (PDOException $e) {
+        // Handle the exception (e.g., log error, return false, etc.)
+         $con->rollBack();
+        return false; // Update failed
+    }
+     }
 }

@@ -10,13 +10,13 @@ if (empty($_POST["id"])) {
 }
  if(isset($_POST["update"])) {
     //User Information
-    $firstname=$_POST['Firstname'];
-    $lastname=$_POST['Lastname'];
-    $birthday=$_POST['Birthday'];
-    $sex=$_POST['Sex'];
-    $username = $_POST['UserName'];
-    $password = $_POST['UserPass'];
-    $confirm = $_POST['UserPass'];
+    $firstname=$_POST['firstname'];
+    $lastname=$_POST['lastname'];
+    $birthday=$_POST['birthday'];
+    $sex=$_POST['sex'];
+    $username = $_POST['Username'];
+    $password = $_POST['Pass_word'];
+    $confirm = $_POST['Pass_word'];
  
     //Address Information
     $street = $_POST['street'];
@@ -150,7 +150,7 @@ if (empty($_POST["id"])) {
  
         </div>
         <div class="col-lg-3 col-md-4">
-            <a class="btn btn-outline-danger btn-block mt-4" href="index.php">Go Back</a>
+            <a class="btn btn-outline-danger btn-block mt-4" href="login.php">Go Back</a>
         </div>
     </div>
 </div>

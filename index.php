@@ -15,6 +15,7 @@ if(isset($_POST['delete'])){
     echo "Something went wrong.";
   }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -183,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
-</script> <!-- Pop Up Messages after a succesful transaction ends here -->
 
+</script> <!-- Pop Up Messages after a succesful transaction ends here -->
 </body>
 </html>
