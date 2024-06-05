@@ -58,4 +58,3 @@ if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == 
 }
 
 echo json_encode($response);
-

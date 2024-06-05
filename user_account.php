@@ -51,6 +51,8 @@ if (isset($_POST['updatepassword'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome!</title>
+   <!-- jQuery for Address Selector -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css">
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -438,8 +440,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script> <!-- Pop Up Messages after a succesful transaction ends here -->
-
-
 <!-- Change Profile Picture Logic Starts here --><script>
     $(document).ready(function() {
         $('#profilePictureInput').change(function() {
@@ -531,6 +531,95 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     </script><!-- Change Profile Picture Logic Ends here -->
 
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
 <!-- For Address Selector Validation --><script>
 document.addEventListener('DOMContentLoaded', function() {
   // Fetch region, province, city, and barangay options dynamically if needed
